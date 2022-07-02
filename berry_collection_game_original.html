@@ -1,0 +1,769 @@
+<form method="POST" action="https://eta2ccwpbj.execute-api.ap-south-1.amazonaws.com/default/music-foraging"> 
+
+
+<!-- mturk hit below --> 
+<!-- ***************************************************************************************************************************************** -->
+
+<!-- jquery import -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<!-- CSS styling -->
+<style>
+body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color:	lemonchiffon; 
+}
+
+.startDiv {
+    display: grid;
+    grid-template-columns: 20fr 1fr;
+    grid-auto-rows: minmax(10px, auto);
+    grid-gap: 5px;
+    margin: 0 auto;
+    font-size: 18px;
+    font-family: "Comic Sans MS";
+    padding: 25px;
+    width: 512px;
+    background-color: palegoldenrod;   
+}
+
+.form-group {
+    display: grid;
+
+    margin: 0 auto;
+    font-size: 18px;
+    font-family: "Comic Sans MS";
+    padding: 25px;
+    width: 512px;
+    background-color: palegoldenrod;  
+
+}
+
+#line00 {
+    padding: 25px;
+
+    text-align: center;
+    font-family: "Comic Sans MS";
+    font-size: 22px;
+    background-color: palegoldenrod;
+
+}
+
+#line0 {
+    padding: 5px;
+    grid-row: 1 / 1;
+    grid-column: 1 / 5;
+    text-align: center;
+    text-decoration: underline;
+    font-size: 30px;
+}
+
+#line01 {
+    padding: 5px;
+    grid-row: 2 / 2;
+    grid-column: 1 / 6;
+    text-align: center;
+    font-size: 22px;
+}
+
+#line02 {
+    padding: 5px;
+    grid-row: 3 / 3;
+    grid-column: 1 / 6;
+    text-align: center;
+}
+
+#line03 {
+    padding: 5px;
+    grid-column: 1 / 6;
+    text-align: center;
+}
+
+/* #line1 {
+    grid-row: 7 / 8;
+    grid-column: 1 / 3;
+} */
+
+#line2 {
+    padding: 5px;
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+}
+
+#line3 {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+}
+
+#line4 {
+    grid-row: 3 / 4;
+    grid-column: 1 / 3;
+    font-size: 14px;
+}
+
+#line100 {
+    grid-row: 4 / 5;
+    grid-column: 1 / 3;
+}
+
+/* #startDiv1{
+    display: none;
+} */
+
+#startDiv2, #startDiv3 {
+    display: none;
+}
+
+#line5 {
+    grid-row: 1 / 2;
+    grid-column: 1 / 3;
+}
+
+#line6 {
+    color: green;
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+}
+
+#line7 {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+}
+
+#line8 {
+    grid-row: 3 / 4;
+    grid-column: 1 / 3;
+}
+
+#line9 {
+    grid-row: 4 / 5;
+    grid-column: 1 / 2;
+}
+
+#line10 {
+    grid-row: 4 / 5;
+    grid-column: 2 / 3;
+}
+
+#line10_5 {
+    grid-row: 5 / 6;
+    grid-column: 1 / 3;
+}
+
+#line11 {
+    grid-row: 6 / 7;
+    grid-column: 1 / 3;
+}
+
+#line12 {
+    grid-row: 7 / 8;
+    grid-column: 1 / 3;
+}
+
+#startExperiment {
+    grid-row: 8 / 9;
+    grid-column: 1 / 3;
+}
+
+#trialDiv {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: none;
+    font-size: 25px;
+    font-family: "Comic sans MS";
+}
+
+
+#road {
+    position: absolute;
+    height: 100%;
+    width: 25%;
+    left: 37.5%;
+}
+
+.lane {
+    position: absolute;
+    height: 100%;
+    overflow: hidden;
+    width: 12.5%;
+    max-width: 150px;
+}
+
+#leftlane {
+    right: 62.5%;
+}
+
+#rightlane {
+    left: 62.5%;
+}
+
+.bush {
+    position: absolute;
+    width: 100%;
+    max-width: 150px;
+}
+
+#explore {
+    position: absolute;
+    left: 63%;
+    bottom: 7%;
+    max-width: 150px;
+}
+
+#fixation {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 7.5%;
+    max-width: 135px;
+}
+
+#bushOutput {
+    position: absolute;
+    color: green;
+    left: 15%;
+    display: none;
+}
+
+#breakDiv {
+    display: none;
+    margin: auto;
+    font-size: 20px;
+    font-family: "Comic sans MS";
+    padding: 22px;
+    width: 300px;
+    background-color: palegoldenrod;
+    text-align: center
+}
+
+#finishDiv {
+    margin: 0 auto;
+    font-size: 18px;
+    font-family: "Comic sans MS";
+    padding: 22px;
+    width: 500px;
+    display: none;
+    background-color: palegoldenrod;
+    text-align: center
+}
+
+#submitButton {
+    position: absolute;
+    left: 50%;
+    display: none;
+}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+</style>
+
+
+
+
+
+<!-- html elements -->
+<!-- <div id="participantid" class="form-group"><br/>
+    <label for="wblid">Please enter your MTurk ID/ WBL ID/ Student Roll No. here:</label> <br/>
+    <input class="form-control" id="wblid" name="wblid" placeholder="" required="" type="text" />
+    <input type="hidden" name="bucket_key" value="mturk"/>
+    <p><a href="#" id="nextid">Next</a></p>
+    <input type="submit" value="Submit">
+</div> -->
+
+
+<div id="startDiv1" class="startDiv">
+    <div class="slidecontainer">
+        <p id="line0">Valence Arousal scales:</p>
+        <br>
+        <p id="line01">Mark the scale according to how you feel now.</p>
+        <br>
+        <p id="line02">1 being <b>very sad</b> and 10 being <b>very happy</b></p>
+        <input type="range" min="1" max="10" value="5" class="slider" id="myRangeOne">
+        <p id="demoOne">0</p>
+        <script>
+            var valence1= 20;
+            var arousal1= 20;
+            var blockNumber = "b1";
+            var sliderOne = document.getElementById("myRangeOne");
+            var outputOne = document.getElementById("demoOne");
+            outputOne.innerHTML = sliderOne.value; // Display the default slider value
+            // Update the current slider value (each time you drag the slider handle)
+            sliderOne.oninput = function() {
+              outputOne.innerHTML = this.value;
+              var valence1= outputOne;
+            }</script>
+        <br>
+        <p id="line03">1 being <b>very calm</b> and 10 being <b>very excited(or anxious)</b></p>
+        <br>
+        <input type="range" min="1" max="10" value="5" class="slider" id="myRangeTwo">
+        <p id="demoTwo">0</p>
+        <script>var blockNumber = "b2";
+            var sliderTwo = document.getElementById("myRangeTwo");
+            var outputTwo = document.getElementById("demoTwo");
+            outputTwo.innerHTML = sliderTwo.value; // Display the default slider value
+            // Update the current slider value (each time you drag the slider handle)
+            sliderTwo.oninput = function() {
+              outputTwo.innerHTML = this.value;
+              var arousal1= outputTwo;
+            }</script>
+      </div>
+      <br>
+    <p id="line1" style="font-size: 24px">The experiment is about to start. Click below to begin the game!</p>
+    <br>
+        <p><a href="#" id="startExperiment">Next</a></p>
+</div>
+
+<!-- <div id="startDiv2" class="startDiv">
+    <p id="line5">Then, on each trial, you will either choose to <b>stay</b> at the bush you are at or <b>leave</b> the current bush and travel to a fresh bush.</p>
+    <div id="line6">
+        +1.83
+        <img src="bush-md.png" width=100px>
+    </div>
+    <p id="line7">To <b>pick berries</b> from the current bush, hover your cursor over the bush next to the center box.
+        The number of berries you pick at each attempt will be indicated next to the bush.</p>
+    <p id="line8"><i>As you keep picking from the same bush repeatedly, the number of berries you pick at each attempt will go down as you will be <b>depleting</b> this bush.</i></p>
+    <svg id="line9">
+        <rect height=100px width=100px style="stroke:green;
+                                 stroke-width: 6;
+                                 fill:none;"/>
+    </svg>
+    <p id="line10">To <b>travel</b> to the next bush, mouse over the box on the opposite side of the bush.</p>
+    <p id="line10_5">You can choose to leave the current bush to travel to a fresh bush at any time. When you do that, you will need to wait while you travel to the next bush. However, once you arrive at the new bush, the amount of berries you pick at each harvest will reset to the initial value.</p>
+    
+
+    <p id="line11">You will play one session of the foraging game, which will consist of two blocks each. The environment will change between these blocks.</p>
+    
+
+    <p id="line12">There is an <b>unlimited number of bushes</b> in the environment, but a <b>finite amount of time</b> (4 minutes). Try to collect as many berries as you can; your bonus amount will be based on that!</p>
+    
+
+    <p><a href="#" id="next2">Next</a></p>
+</div>
+
+<div id="startDiv3" class="startDiv">
+    <p>You may now watch this demonstration video.</p>
+    <br/>
+    <p>
+        <video width="512" height="288" controls>
+            <source src="Foraging Demo2.mp4" type="video/mp4">
+        </video>
+    </p>
+    <br/>
+    <p><a href="#" id="startExperiment">Start Experiment</a></p>
+</div> -->
+
+<div id="trialDiv">
+    <svg id="road">
+        <rect width=100% height=100% style="fill:#ffcc99" />
+    </svg>
+
+    <div id="leftlane" class="lane">
+        <img id="bush0" class="bush" src="bush-md.png">
+        <img id="bush2" class="bush" src="bush-md.png">
+        <img id="bush4" class="bush" src="bush-md.png">
+        <img id="bush6" class="bush" src="bush-md.png">
+        <img id="bush8" class="bush" src="bush-md.png">
+        <img id="bush10" class="bush" src="bush-md.png">
+    </div>
+
+    <div id="rightlane" class="lane">
+        <img id="bush1" class="bush" src="bush-md.png">
+        <img id="bush3" class="bush" src="bush-md.png">
+        <img id="bush5" class="bush" src="bush-md.png">
+        <img id="bush7" class="bush" src="bush-md.png">
+        <img id="bush9" class="bush" src="bush-md.png">
+        <img id="bush11" class="bush" src="bush-md.png">
+    </div>
+
+    <svg id="explore">
+        <rect height=100% width=100% style="stroke:green;
+                                 stroke-width: 6;
+                                 fill:none;"/>
+    </svg>
+
+    <svg id="fixation">
+        <rect id="fixationBorder" height=100% width=100% style="stroke:yellowgreen;
+                                            stroke-width: 14;
+                                            fill:none;" />
+        <rect id="focus" height=0% width=100% style="fill:green;" />
+    </svg>
+
+    <p id="bushOutput"> 0.0 </p>
+</div>
+
+<div id="breakDiv">
+    <p>Click "Next Round" below to start the next scenario.</p>
+    </br>
+    <p>In this round, bushes are <b>farther apart</b>, so it will take longer to travel between them.</p>
+    </br>
+    <p><a href="#" id="nextBlock" style="font-size: 25px1
+        ">Next Round</a></p>
+</div>
+
+<div id="finishDiv">
+    <p>Your time has expired.</p>
+</div>
+
+<div id="data">
+    <input name="dummy" value=0 type="hidden">
+</div>
+
+
+
+
+<!-- javascript -->
+<script>
+
+var withmusic=0;
+// -- parameters --
+var travelTime = 2000;   //time in between bushes in ms (2000)
+var initBerries = 7;    //initial number of berries per bush
+var rateOfDec = 1;    //rate at which berries deplete from bush
+var randStdDev = 0.5;
+//parameters used for the second block of time
+var travelTime2 = 6000;
+var initBerries2 = 56;
+var rateOfDec2 = 8 ;
+var randStdDev2 = 4;
+
+
+var totalTime1 = 10;     //total time allotted for the trial 1 (in seconds)
+var totalTime2 = 10;     //total time allotted for the trial 2 (in seconds)
+
+var speed = 80;         // ms per 1% of the screen distance (inverse speed?) (120)
+var fixationTime = 400 ; //time it takes to fill fixation square (ms)
+var holdingTime = 1000; //time that result is displayed before user is released
+// ----------------
+
+
+// Code related to setup screen
+$('#next1').click(function() {
+    $('#startDiv1').hide();
+    $('#startDiv2').css("display", "grid");
+});
+
+$('#next2').click(function() {
+    $('#startDiv2').hide();
+    $('#startDiv3').css("display", "grid");
+});
+
+$('#nextid').click(function() {
+    $('#participantid').hide();
+    $('startDiv1').css("display", "grid");
+});
+
+
+
+
+// Function to add data in regular, non-ragged obs
+function addObservation(eventLabel, totalTrialTime, reactionTime, decisionType, berryCount, musicstat, val, aro) {
+    $('#data').append('<input name="' + eventLabel + '" type="hidden">');
+    $('#data').append('<input name="' + eventLabel + '" class="totalTrialTime" value="' + totalTrialTime + '" type="hidden">');
+    $('#data').append('<input name="' + eventLabel + '" class="reactionTime" value="' + reactionTime + '" type="hidden">');
+    $('#data').append('<input name="' + eventLabel + '" class="trialType" value="' + decisionType + '" type="hidden">');
+    $('#data').append('<input name="' + eventLabel + '" class="berryCount" value="' + berryCount + '" type="hidden">');
+    $('#data').append('<input name="' + eventLabel + '" class="withmusic" value="' + musicstat + '" type="hidden">');
+    $('#data').append('<input name="' + eventLabel + '" class="valence1" value="' + val + '" type="hidden">');
+    $('#data').append('<input name="' + eventLabel + '" class="arousal1" value="' + aro + '" type="hidden">');
+    console.log($("#data"));
+}
+
+$('#startExperiment').click(showFirstTrial);
+function showFirstTrial() {
+    $('body').css('background-color', 'AntiqueWhite')
+    $('.startDiv').hide();
+    $('#trialDiv').show();
+    //draw the bushes
+    for (i = 0; i < 12; i++) {
+        $('#bush' + i).css("bottom", 7 + (travelTime / speed * i) + "%");
+    }
+    //draw the explore square
+    var ht = $('#bush0').height();
+    $('#explore').css({
+        'height': ht + 'px',
+        'width': ht + 'px'
+    })
+    //draw the fixation square
+    $('#fixation').css({
+        'height': ht - 10 + 'px',
+        'width': ht - 10 + 'px'
+    })
+    //draw the bush output
+    var bot = $('#bush0').css("bottom");
+    $('#bushOutput').css({
+        'bottom': bot
+    })
+
+    //begin the timer
+    setTimeout(function() {
+        //append the total number of berries collected
+        //$('#data').append('<input name=block1totalBerries ' + 'class="totalBerries " value=' + culmBerries + ' type="hidden">');
+
+        $('#breakDiv').prepend('<p>You collected <b>' + culmBerries.toFixed(2) + '</b> berries this round!');
+        $('#trialDiv').hide();
+        $('#breakDiv').show();
+    }, totalTime1 * 1000);
+}
+
+
+
+// Code related to task:
+
+// Standard Normal variate using Box-Muller transform
+// returns mean = 0, var = 1
+function randn_bm(sd = 1) {
+    var u = 1 - Math.random(); // Subtraction to flip [0, 1) to (0, 1].
+    var v = 1 - Math.random();
+    return Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v ) * sd;
+}
+
+
+
+var bushOnLeft = true;
+
+function moveBushes() {
+    selectTime = false;
+    $('#explore').hide();
+    $('#fixation').hide();
+    bushOnLeft = !bushOnLeft;
+
+    //append new reaction time data
+    var rt = new Date() - startTrialTime;
+    var totalTrialTime = new Date() - startInitiateTime;
+
+    addObservation(blockNumber + "_p" + (currBush + 1) + "n" + trialPerBush, totalTrialTime, rt, "l", "",withmusic,valence1,arousal1)
+
+    //$('#data').append('<input name=' + blockNumber + 'rt_bush' + (currBush + 1) + "round" + trialPerBush + ' class="reactionTime" value=' + rt + ' type="hidden">');
+    //$('#data').append('<input name=' + blockNumber + 'totalTrialTime_bush' + (currBush + 1) + "round" + trialPerBush + ' class="totalTrialTime" value=' + totalTrialTime + ' type="hidden">');
+    //$('#data').append('<input name=' + blockNumber + 'decision_bush' + (currBush + 1) + "round" + trialPerBush + ' class="trialType" value=explore' + ' type="hidden">');
+
+    //move the bushes
+    $('.bush').animate( {
+        bottom: "-=" + (travelTime / speed) + "%"
+    }, travelTime, "linear", function() {
+        //if bush leaves screen, push it to top of screen
+        if ($(this).css('bottom') < "0px") {
+            $(this).css('bottom', 7 + (travelTime / speed * 11) + '%');
+            //redraw the explore square and bushOutput, contingent on bushOnLeft
+            if (bushOnLeft) {
+                $('#explore').css({
+                    'right': 'auto',
+                    'left': '63%'
+                });
+                $('#bushOutput').css({
+                    'right': 'auto',
+                    'left': '15%'
+                })
+            } else {
+                $('#explore').css({
+                    'left': 'auto',
+                    'right': '63%'
+                });
+                $('#bushOutput').css({
+                    'left': 'auto',
+                    'right': '15%'
+                })
+            }
+            $('#fixationBorder').css('stroke', 'yellowgreen');
+            $('#focus').css('height', '0%');
+
+            $('#explore').show();
+            $('#fixation').show();
+            // start a new timer that will track when subject enters box
+            startInitiateTime = new Date();
+            //related to bushes
+            trialPerBush = 1;
+            //berries = Math.round(+(initBerries + randn_bm(randStdDev)).toFixed(2));
+            berries = +(initBerries + randn_bm(randStdDev)).toFixed(2);
+            currBush++;
+        }
+    });
+
+}
+
+// event listeners
+
+
+var selectTime = false;
+var currBush = 0;
+var trialPerBush = 1;
+//var berries = Math.round(+(initBerries + randn_bm(randStdDev)).toFixed(2));
+var berries = +(initBerries + randn_bm(randStdDev)).toFixed(2);
+var startTrialTime;
+var startInitiateTime = new Date();
+var culmBerries = 0;
+
+$('#fixation').hover(
+    function() {   //function while hovering
+    if (!selectTime) {
+        $('#fixationBorder').css('stroke', 'green');
+        myTimer = setTimeout(function () {
+            $('#focus').css('height', '100%');
+            selectTime = true;
+            //begin timer
+            startTrialTime = new Date();
+        }, fixationTime);
+    }
+}, function() {    //function when left
+    if (!selectTime) {
+        $('#fixationBorder').css('stroke', 'yellowgreen');
+        clearTimeout(myTimer);
+    }
+})
+
+$('.bush').mouseenter(function() {
+    //if you mouseover the bush that is lined up
+    if ( $(this).attr('id') == ("bush" + (currBush % 12)) && selectTime) {
+        selectTime = false;
+        var rt = new Date() - startTrialTime;
+        var totalTrialTime = new Date() - startInitiateTime;
+        $('#fixation').hide();
+        //append new data
+        addObservation(blockNumber + "_p" + (currBush + 1) + "n" + trialPerBush, totalTrialTime, rt, "s", berries,withmusic,valence1,arousal1)
+
+        //$('#data').append('<input name=' + blockNumber + 'berries_bush' + (currBush + 1) + "round" + trialPerBush + ' class="berryCount" value=' + berries + ' type="hidden">');
+        //$('#data').append('<input name=' + blockNumber + 'rt_bush' + (currBush + 1) + "round" + trialPerBush + ' class="reactionTime" value=' + rt + ' type="hidden">');
+        //$('#data').append('<input name=' + blockNumber + 'totalTrialTime_bush' + (currBush + 1) + "round" + trialPerBush + ' class="totalTrialTime" value=' + totalTrialTime + ' type="hidden">');
+        //$('#data').append('<input name=' + blockNumber + 'decision_bush' + (currBush + 1) + "round" + trialPerBush + ' class="trialType" value=exploit' + ' type="hidden">');
+
+        culmBerries += berries;
+        $('#bushOutput').html('+' + berries);
+        $('#bushOutput').delay(500).show(0);
+        //display bush output for some time, reset for next round
+        setTimeout(function() {
+            $('#bushOutput').hide();
+            $('#fixationBorder').css('stroke', 'yellowgreen');
+            $('#focus').css('height', '0%');
+            //decrement berries, but only if positive
+            //berries -= Math.round((+(rateOfDec + randn_bm(randStdDev)).toFixed(2)));
+            berries -= +(rateOfDec + randn_bm(randStdDev)).toFixed(2);
+            berries = +(berries.toFixed(2));
+            if (berries < 0) {
+                berries = 0;
+            }
+
+            trialPerBush++;
+            $('#fixation').show();
+        }, holdingTime);
+    }
+})
+
+$('#explore').mouseenter(function() {
+    if (selectTime) {
+        moveBushes();
+    }
+})
+
+
+$('#nextBlock').click(function() {
+    $('.bush').stop();
+    //set event variables to initial values
+    selectTime = false;
+    currBush = 0;
+    trialPerBush = 1;
+    //berries = Math.round(+(initBerries + randn_bm(randStdDev2)).toFixed(2));
+    berries = +(initBerries2 - randn_bm(randStdDev2)).toFixed(2);
+    startTrialTime;
+    startInitiateTime = new Date();
+    culmBerries = 0;
+    bushOnLeft = true;
+    $('#fixationBorder').css('stroke', 'yellowgreen');
+    $('#focus').css('height', '0%');
+
+    //set parameters to new parameters
+    travelTime = travelTime2;
+    initBerries = initBerries2;
+    rateOfDec = rateOfDec2;
+    blockNumber = "b2"
+
+    //redraw the bushes
+    for (i = 0; i < 12; i++) {
+        $('#bush' + i).css("bottom", 7 + (travelTime / speed * i) + "%");
+    }
+    //reposition explore square
+    $('#explore').css('left', '63%');
+    //reposition bushOutput
+    $('#bushOutput').css('left', '15%');
+
+    $('#breakDiv').hide();
+    $('#trialDiv').show();
+    $('#explore').show();
+    $('#fixation').show();
+
+    //begin the timer
+    setTimeout(function () {
+        //append the total number of berries collected
+        //$('#data').append('<input name=Block2totalBerries ' + 'class="totalBerries " value=' + culmBerries + ' type="hidden">');
+
+        $('#trialDiv').hide();
+        $('#finishDiv').append('<p>You collected <b>' + culmBerries.toFixed(2) + '</b> berries this round!');
+        //$('#finishDiv').append('<p>To complete the task and receive your reward, please complete the following survey by following the link below.</p>');
+        //$('#finishDiv').append('<p><strong>Make sure to leave this window open as you complete the survey. </strong></p>');
+        //$('#finishDiv').append('<p>When you are finished, you will return to this page to paste the code into the box.</p>');
+        //$('#finishDiv').append('<div class="row" id="workContent"><div class="col-xs-12 col-md-6 col-md-offset-3"><!-- Content for Worker --><table class="table table-condensed table-bordered"><colgroup><col class="col-xs-4 col-md-4" /><col class="col-xs-8 col-md-8" /></colgroup><tbody><tr><td><label>Survey link:</label></td><td><a class="dont-break-out" href="https://upenn.co1.qualtrics.com/jfe/form/SV_cNiPOAgJOvt8grr" target="_blank">https://____</a></td></tr></tbody></table><!-- End Content for Worker --><!-- Input from Worker --><div class="form-group"><label for="surveycode">Provide the survey code here:</label> <input class="form-control" id="surveycode" name="surveycode" placeholder="e.g. 123456" required="" type="text" /></div><!-- End input from Worker --></div>')
+        $('#finishDiv').append('<p>When you are done, click "submit" below.</p>');
+        $('#finishDiv').show();
+        $('#submitButton').show();
+    }, totalTime2 * 1000);
+
+});
+
+
+</script>
+
+
+<!-- ***************************************************************************************************************************************** -->
+<div id="submitButton" style="position:inherit;margin:0 auto;width:500px">
+    <!-- <div class="form-group">
+        <label for="wblid">Please enter your MTurk ID/ WBL ID/ Student Roll No. here:</label> 
+        <input class="form-control" id="wblid" name="wblid" placeholder="" required="" type="text" />
+        <input type="hidden" name="bucket_key" value="mturk"/>
+    </div> -->
+    <p id="line00">Now we will move to the next game with music.</br></br>
+<a href="berry_collection_game_music.html">Move to next game</a></p>
+</div>
+</form>
+<!--  -->
